@@ -1,191 +1,70 @@
-# Student Database Practice Project
+# Student Database Practice Project (Completed)
 
-This project is a simple Maven + SQLite project for practicing basic database functionality.
+This is a Maven + SQLite project completed as part of SQL practice. It demonstrates basic relational database operations using two tables: `courses` and `students`.
 
-You will work with two tables:
+Each student is linked to a course using a foreign key relationship:
 
-1. `courses`
-2. `students`
-
-The `students` table has a foreign key that connects each student to a course.
-
-```text
 students.course_id → courses.course_id
-```
-
-This means every student must belong to an existing course.
 
 ---
 
-## Project Structure
 
-Your project should look like this:
+## How It Works
 
-```text
-student-db-test/
-│
-├── pom.xml
-├── README.md
-│
-├── student.db
-│
-└── src/
-    └── main/
-        ├── java/
-        │   └── com/
-        │       └── example/
-        │           └── DatabaseDemo.java
-        │
-        └── resources/
-            ├── create.sql
-            ├── insert.sql
-            └── query.sql
-```
+When the program runs (`DatabaseDemo.main()`), it executes SQL files in order:
 
-The file `student.db` is the SQLite database file. It is created automatically when the Java program runs.
+1. create.sql → Drops and recreates tables with constraints  
+2. insert.sql → Inserts sample courses and students  
+3. query.sql → Runs SQL queries and prints output  
 
 ---
 
-## Files You Will Use
+## Database Design
 
-### `create.sql`
+### Courses Table
+- course_id → Primary Key  
+- course_name → Required  
+- credits → Must be greater than 0  
 
-This file creates the database tables.
-
----
-
-### `insert.sql`
-
-This file inserts data into the tables.
-
----
-
-### `query.sql`
-
-This file is used to practice database queries.
+### Students Table
+- id → Primary Key  
+- name → Required  
+- email → Required & Unique  
+- age → Must be 18 or older  
+- course_id → Foreign Key → courses.course_id  
 
 ---
 
-## How to Run the Project
+## SQL Operations Practiced
 
-Run the program by right-clicking on DatabaseDemo class and choosing: `Run DatabaseDemo.main()`
-
-The program will run these files in order:
-
-```text
-create.sql
-insert.sql
-query.sql
-```
-
-The output will be printed in the terminal.
+- CREATE TABLE with constraints (PK, FK, UNIQUE, CHECK, NOT NULL)  
+- INSERT data into tables  
+- SELECT queries  
+- JOIN between students and courses  
+- GROUP BY with COUNT  
+- UPDATE records  
+- DELETE records  
 
 ---
 
-## Student Tasks
+## Reset Behavior
 
-### Part 1: `create.sql`
-
-Complete the table creation.
-
-Checklist:
-
-* Create a `courses` table.
-* Create a `students` table.
-* Add a 'primary key' to both tables.
-* Add a 'foreign key' from `students.course_id` to `courses.course_id`.
-* Make student 'name' required.
-* Make student 'email' required and unique.
-* Make student 'age' 18 or older.
-* Make course 'name' required.
-* Make course 'credits' greater than 0.
+Every execution resets the database:
+- Tables are dropped and recreated
+- Fresh data is inserted each run
 
 ---
 
-### Part 2: `insert.sql`
+## Learning Outcomes
 
-Insert data into the tables.
-
-Checklist:
-
-* Insert course data first.
-* Insert 3 courses.
-* Insert 5 students.
-  * Make sure all students are at least 18 years old.
-  * Make sure all emails are unique.
-  * Make sure every student uses a valid course ID.
+- Relational database design  
+- Foreign key relationships  
+- SQL CRUD operations  
+- JOIN and aggregation queries  
+- Constraint handling in SQLite  
 
 ---
 
-### Part 3: `query.sql`
+## Status
 
-Practice SQL queries.
-
-Checklist:
-
-* Select all courses.
-* Select all students.
-* Select students older than 20.
-* Show students with their course names using `JOIN`.
-* Count students in each course.
-* Update one student's age.
-* Update one student's course.
-* Delete one student.
-* Show the final result.
-
----
-
-## Resetting the Database
-
-Every time the program runs, `create.sql` drops and recreates the tables.
-
-This means old data is removed and fresh data is inserted again.
-
----
-
-## Common Problems
-
-### Problem: Foreign key error
-
-This means you tried to insert a student with a `course_id` that does not exist in the `courses` table.
-
-Fix it by using a valid `course_id`.
-
----
-
-### Problem: UNIQUE constraint failed
-
-This means you inserted an email that already exists.
-
-Fix it by using a different email.
-
----
-
-### Problem: CHECK constraint failed
-
-This means you inserted an invalid value.
-
-For example, student age must be 18 or older.
-
----
-
-### Problem: NOT NULL constraint failed
-
-This means a required value was missing.
-
-For example, student name and email cannot be null.
-
----
-
-## Learning Goals
-
-By completing this project, you will learn how to:
-
-* create database tables
-* use primary keys
-* use foreign keys
-* insert data
-* select data
-* join two tables
-* update records
-* delete records
+Project Completed Successfully.
