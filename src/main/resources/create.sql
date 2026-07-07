@@ -32,7 +32,7 @@ CREATE TABLE students
     id          INTEGER PRIMARY KEY,
     name        TEXT NOT NULL,
     email       TEXT NOT NULL UNIQUE,
-    age         INTEGER CHECK (age >= 18),
+    age         INTEGER NOT NULL CHECK (age >= 18),
     course_id   INTEGER NOT NULL,
 --     foreign key reference
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
