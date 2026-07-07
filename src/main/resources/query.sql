@@ -52,4 +52,7 @@ FROM students
 WHERE id = 5;
 
 -- Check the final result.
-SELECT * FROM students;
+SELECT s.id, s.name, s.email, s.age, c.course_name
+FROM students s
+JOIN courses c ON s.course_id = c.course_id
+ORDER BY s.id;
